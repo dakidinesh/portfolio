@@ -213,7 +213,7 @@ const Navigation = ({ activeSection, theme, toggleTheme }) => {
     }
   }, [mobileMenuOpen])
 
-  const navItems = ['Home', 'Education', 'Experience', 'Skills', 'Certifications', 'Projects', 'Contact']
+  const navItems = ['Home', 'Education', 'Experience', 'Skills', 'Projects', 'Certifications', 'Contact']
 
   return (
     <motion.nav 
@@ -1619,7 +1619,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'education', 'experience', 'skills', 'projects', 'contact']
+      const sections = ['home', 'education', 'experience', 'skills', 'projects', 'certifications', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -1658,8 +1658,8 @@ function App() {
           <Education />
           <Experience />
           <Skills />
-          <Certifications />
           <Projects />
+          <Certifications />
           <Contact />
           <Footer />
           <BackToTop />
