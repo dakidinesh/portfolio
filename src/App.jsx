@@ -124,6 +124,8 @@ import csufLogo from './assets/csuf-logo.png'
 import gitamLogo from './assets/gitam-logo.png'
 import replyquickLogo from './assets/replyquick-logo.png'
 import phoenixLogo from './assets/phoenixglobal-logo.png'
+import captionGenImage from './assets/caption_gen.png'
+import emotionMusicImage from './assets/emotion_music_project.png'
 
 // Theme Toggle Component
 const ThemeToggle = ({ theme, toggleTheme }) => {
@@ -1336,20 +1338,20 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Sales Performance Analytics Platform',
-      description: 'Architected end-to-end data ingestion and ETL pipelines from MySQL and S3 — reduced report generation time by ~50%. Designed interactive BI dashboards for revenue tracking, churn analysis, and sales forecasting.',
-      tags: ['Tableau', 'Python', 'SQL', 'AWS S3'],
-      image: '📈',
-      github: '#',
-      live: '#'
+      title: '✨ CaptionGen',
+      description: 'AI-Powered Instagram Caption Generator — Transform your photos into viral, engagement-driving captions instantly. CaptionGen leverages Google\'s Gemini 2.0 Flash model to analyze images and generate contextually relevant, engaging Instagram captions. Whether you\'re a content creator, social media manager, or casual Instagram user, CaptionGen helps you craft the perfect caption in seconds.',
+      tags: ['AI', 'Google Gemini', 'React', 'Python'],
+      image: captionGenImage,
+      github: 'https://github.com/dakidinesh/CaptionGen',
+      live: 'https://dakidinesh.github.io/CaptionGen/'
     },
     {
       id: 2,
-      title: 'Financial Risk Classification System',
-      description: 'Developed and validated a gradient-boosting model for loan-default risk prediction — improved predictive accuracy by ~18%. Built a real-time risk assessment UI using React for on-demand evaluations.',
-      tags: ['Python', 'R', 'scikit-learn', 'React'],
-      image: '💰',
-      github: '#',
+      title: 'Emotion-Based Music Recommendation System',
+      description: 'A real-time emotion detection and music recommendation system that uses facial expression recognition to suggest personalized music based on your current mood. The system captures video feed from your webcam, detects emotions using a deep learning model, and recommends songs accordingly using Spotify integration.',
+      tags: ['Python', 'TensorFlow', 'Flask', 'OpenCV', 'Spotify API'],
+      image: emotionMusicImage,
+      github: 'https://github.com/dakidinesh/Emotion-Music-Recommendation-System',
       live: '#'
     },
     {
@@ -1397,11 +1399,11 @@ const Projects = () => {
               whileHover={{ y: -10 }}
             >
               <div className="project-image">
-                <span className="project-emoji">{project.image}</span>
-                <div className="project-overlay">
-                  <a href={project.github} className="project-link">GitHub</a>
-                  <a href={project.live} className="project-link">Live Demo</a>
-                </div>
+                {typeof project.image === 'string' && project.image.length <= 3 ? (
+                  <span className="project-emoji">{project.image}</span>
+                ) : (
+                  <img src={project.image} alt={project.title} className="project-img" />
+                )}
               </div>
               <div className="project-content">
                 <h3>{project.title}</h3>
@@ -1410,6 +1412,10 @@ const Projects = () => {
                   {project.tags.map(tag => (
                     <span key={tag} className="tag">{tag}</span>
                   ))}
+                </div>
+                <div className="project-links">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">GitHub</a>
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link">Live Demo</a>
                 </div>
               </div>
             </motion.article>
