@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import emailjs from '@emailjs/browser'
 import './App.css'
 
 // Loading Screen Component
@@ -126,6 +127,7 @@ import replyquickLogo from './assets/replyquick-logo.png'
 import phoenixLogo from './assets/phoenixglobal-logo.png'
 import captionGenImage from './assets/caption_gen.png'
 import emotionMusicImage from './assets/emotion_music_project.png'
+import portfolioProjectImage from './assets/portfolio_project.png'
 
 // Theme Toggle Component
 const ThemeToggle = ({ theme, toggleTheme }) => {
@@ -1359,7 +1361,7 @@ const Projects = () => {
       title: 'Personal Website',
       description: 'A modern, responsive portfolio website built with React and Framer Motion. Features smooth animations, dark/light theme toggle, and interactive UI elements. Built with Vite for fast development and optimized production builds, deployed on GitHub Pages with automated CI/CD workflows.',
       tags: ['React', 'JavaScript', 'Framer Motion', 'CSS', 'Vite'],
-      image: '💼',
+      image: portfolioProjectImage,
       github: 'https://github.com/dakidinesh/portfolio',
       live: 'https://dakidinesh.github.io/portfolio/'
     }
@@ -1420,12 +1422,67 @@ const Projects = () => {
 // Contact Section
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' })
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    // Initialize EmailJS - Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+    // You can get this from https://dashboard.emailjs.com/admin/integration
+    emailjs.init('YOUR_PUBLIC_KEY')
+  }, [])
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Thanks for reaching out! I\'ll get back to you soon.')
-    setFormData({ name: '', email: '', message: '' })
+    setIsSubmitting(true)
+    setSubmitStatus({ type: '', message: '' })
+
+    try {
+      // Send email notification
+      const emailParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'dakidinesh0711@gmail.com',
+        to_name: 'Dinesh Daki'
+      }
+
+      // Replace with your EmailJS service ID and template ID
+      const emailServiceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID'
+      const emailTemplateId = process.env.REACT_APP_EMAILJS_EMAIL_TEMPLATE_ID || 'YOUR_EMAIL_TEMPLATE_ID'
+
+      await emailjs.send(emailServiceId, emailTemplateId, emailParams)
+
+      // Send SMS notification via Verizon email-to-SMS gateway
+      const phoneNumber = '6576317082' // Your 10-digit number without +1
+      const smsEmailParams = {
+        to_email: `${phoneNumber}@vtext.com`, // Verizon SMS gateway
+        subject: 'New Contact Form Submission',
+        message: `New contact from ${formData.name} (${formData.email}): ${formData.message}`,
+        from_name: 'Portfolio Contact Form'
+      }
+
+      try {
+        // Use the same email service but send to Verizon SMS gateway
+        await emailjs.send(emailServiceId, emailTemplateId, smsEmailParams)
+      } catch (smsError) {
+        console.log('SMS notification failed (optional):', smsError)
+        // SMS is optional, so we don't fail the whole submission
+      }
+
+      setSubmitStatus({ 
+        type: 'success', 
+        message: 'Thanks for reaching out! I\'ll get back to you soon.' 
+      })
+      setFormData({ name: '', email: '', message: '' })
+    } catch (error) {
+      console.error('Error sending message:', error)
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Sorry, there was an error sending your message. Please try again or email me directly.' 
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -1521,13 +1578,23 @@ const Contact = () => {
                 required
               ></textarea>
             </div>
+            {submitStatus.message && (
+              <motion.div
+                className={`submit-status ${submitStatus.type}`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                {submitStatus.message}
+              </motion.div>
+            )}
             <motion.button 
               type="submit" 
               className="btn btn-primary btn-full"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              disabled={isSubmitting}
+              whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+              whileTap={!isSubmitting ? { scale: 0.98 } : {}}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </motion.button>
           </motion.form>
         </div>
