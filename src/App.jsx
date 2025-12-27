@@ -1356,24 +1356,6 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: 'HR Analytics Dashboard',
-      description: 'Consolidated disparate HR data sources into unified data models — enabling headcount forecasting, attrition analysis, and diversity KPIs monitoring. Automated recurring workflows, cutting manual reporting by ~60%.',
-      tags: ['Power BI', 'SQL', 'ETL', 'Excel'],
-      image: '👥',
-      github: '#',
-      live: '#'
-    },
-    {
-      id: 4,
-      title: 'End-to-End ETL Data Pipeline',
-      description: 'Implemented a serverless ETL pipeline to merge Salesforce CRM data with operational databases — improved ingestion speed by ~25%. Designed modular validation and logging mechanisms for data reliability.',
-      tags: ['Python', 'AWS Lambda', 'MySQL', 'Salesforce'],
-      image: '🔄',
-      github: '#',
-      live: '#'
-    },
-    {
-      id: 5,
       title: 'Personal Website',
       description: 'A modern, responsive portfolio website built with React and Framer Motion. Features smooth animations, dark/light theme toggle, and interactive UI elements. Built with Vite for fast development and optimized production builds, deployed on GitHub Pages with automated CI/CD workflows.',
       tags: ['React', 'JavaScript', 'Framer Motion', 'CSS', 'Vite'],
