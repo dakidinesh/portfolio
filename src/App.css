@@ -24,14 +24,101 @@
   position: relative;
 }
 
-.loading-icon {
-  font-size: 4rem;
-  margin-bottom: 30px;
+.loading-mascot {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   perspective: 1000px;
 }
 
-.loading-icon span {
+.loading-mascot-body {
+  width: 80px;
+  height: 80px;
+  background: var(--accent-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 30px var(--accent-glow);
+  position: relative;
+  animation: loading-pulse 2s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+  0%, 100% {
+    box-shadow: 0 8px 30px var(--accent-glow);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 12px 40px var(--accent-glow);
+    transform: scale(1.05);
+  }
+}
+
+.loading-mascot-face {
+  width: 64px;
+  height: 64px;
+  background: var(--bg-card);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-mascot-eyes {
+  display: flex;
+  gap: 12px;
+  position: absolute;
+  top: 18px;
+}
+
+.loading-mascot-eye {
+  width: 8px;
+  height: 12px;
+  background: var(--text-primary);
+  border-radius: 50%;
   display: block;
+}
+
+.loading-mascot-cheeks {
+  position: absolute;
+  width: 100%;
+  top: 24px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.loading-mascot-cheek {
+  width: 10px;
+  height: 8px;
+  background: rgba(0, 212, 255, 0.4);
+  border-radius: 50%;
+}
+
+.loading-mascot-smile {
+  position: absolute;
+  bottom: 14px;
+  width: 16px;
+  height: 8px;
+  border: 2px solid var(--text-primary);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+}
+
+.loading-mascot-legs {
+  display: flex;
+  gap: 10px;
+  margin-top: -4px;
+}
+
+.loading-mascot-leg {
+  width: 10px;
+  height: 16px;
+  background: var(--accent-gradient);
+  border-radius: 0 0 6px 6px;
 }
 
 .loading-text {
@@ -100,8 +187,45 @@
     font-size: 2rem;
   }
   
-  .loading-icon {
-    font-size: 3rem;
+  .loading-mascot-body {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .loading-mascot-face {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .loading-mascot-eyes {
+    gap: 8px;
+    top: 14px;
+  }
+  
+  .loading-mascot-eye {
+    width: 6px;
+    height: 10px;
+  }
+  
+  .loading-mascot-cheeks {
+    top: 18px;
+    padding: 0 6px;
+  }
+  
+  .loading-mascot-cheek {
+    width: 8px;
+    height: 6px;
+  }
+  
+  .loading-mascot-smile {
+    bottom: 10px;
+    width: 12px;
+    height: 6px;
+  }
+  
+  .loading-mascot-leg {
+    width: 8px;
+    height: 12px;
   }
   
   .loading-bar-container {

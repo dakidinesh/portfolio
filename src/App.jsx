@@ -33,21 +33,45 @@ const LoadingScreen = ({ onComplete }) => {
       transition={{ duration: 0.5 }}
     >
       <div className="loading-content">
-        {/* Animated Logo/Icon */}
+        {/* Animated Mascot */}
         <motion.div 
-          className="loading-icon"
+          className="loading-mascot"
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ type: "spring", duration: 1 }}
         >
-          <motion.span
-            animate={{ 
-              rotateY: [0, 360],
+          <div className="loading-mascot-body">
+            <div className="loading-mascot-face">
+              <div className="loading-mascot-eyes">
+                <motion.span 
+                  className="loading-mascot-eye"
+                  animate={{ scaleY: [1, 0.1, 1] }}
+                  transition={{ duration: 0.15, repeat: Infinity, repeatDelay: 2 }}
+                />
+                <motion.span 
+                  className="loading-mascot-eye"
+                  animate={{ scaleY: [1, 0.1, 1] }}
+                  transition={{ duration: 0.15, repeat: Infinity, repeatDelay: 2 }}
+                />
+              </div>
+              <div className="loading-mascot-cheeks">
+                <span className="loading-mascot-cheek"></span>
+                <span className="loading-mascot-cheek"></span>
+              </div>
+              <div className="loading-mascot-smile"></div>
+            </div>
+          </div>
+          <motion.div 
+            className="loading-mascot-legs"
+            animate={{
+              rotate: [-8, 8, -8],
+              y: [0, -3, 0]
             }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }}
           >
-            💻
-          </motion.span>
+            <span className="loading-mascot-leg"></span>
+            <span className="loading-mascot-leg"></span>
+          </motion.div>
         </motion.div>
         
         {/* Name Animation */}
@@ -67,15 +91,6 @@ const LoadingScreen = ({ onComplete }) => {
           </motion.div>
         )}
         
-        {/* Subtitle */}
-        <motion.p 
-          className="loading-subtitle"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
-          Software Engineer & Data Analyst
-        </motion.p>
         
         {/* Progress Bar */}
         <div className="loading-bar-container">
