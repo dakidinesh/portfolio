@@ -796,7 +796,7 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Software Engineer with a passion for building elegant user experiences, scalable backend services, and data platforms that power smarter decisions. I bring strong fundamentals in algorithms, distributed systems, cloud engineering, and analytics, transforming complexity into simplicity and data into intelligence while bringing clarity, curiosity, and energy to every team I join.
+          Software Engineer with experience designing scalable backend systems and AI-enabled applications. Strong foundation in data structures, algorithms, object-oriented programming, distributed systems, and cloud computing, with experience using Python, JavaScript, and TypeScript to build high-performance systems.
         </motion.p>
         
         <motion.div 
@@ -909,15 +909,16 @@ const Experience = () => {
       id: 1,
       role: 'Software Engineer Intern',
       company: 'ReplyQuickAI',
-      location: 'Tampa, Florida',
-      period: 'Sep 2025 - Present',
+      location: 'Los Angeles, California',
+      period: 'Sep 2025 - Dec 2025',
       type: 'Internship',
       logo: replyquickLogo,
       highlights: [
-        'Architected and deployed scalable RESTful APIs with Node.js + TypeScript + Prisma, supporting high-concurrency lead-tracking workloads',
-        'Integrated AI-driven voice & messaging automation, handling 1,000+ daily interactions, cutting manual intervention by ~45%',
-        'Engineered event-driven microservices using AWS Lambda, SQS, RDS, improving fault tolerance and async workflow orchestration',
-        'Refactored relational and NoSQL query logic — reduced average query latency by ~35%, increasing throughput'
+        'Designed and implemented scalable microservices-based backend systems using object-oriented design, Node.js, TypeScript, RESTful APIs, and Twilio to support real-time communication workflows',
+        'Architected a high-throughput SMS and voice campaign platform supporting 100K+ messages and calls per campaign, ensuring reliability and horizontal scalability',
+        'Built a real-time observability and monitoring dashboard for AI agents and optimized PostgreSQL queries using Prisma, improving data retrieval performance by 40%',
+        'Reduced API latency by 35% by optimizing database queries, implementing asynchronous processing, and introducing server-side caching, improving overall system throughput and reliability',
+        'Applied efficient data structures and algorithms (hash maps, queues) to optimize backend request handling'
       ]
     },
     {
@@ -925,7 +926,7 @@ const Experience = () => {
       role: 'Student Assistant - Data Engineering & Analytics',
       company: 'California State University Fullerton',
       location: 'Fullerton, California',
-      period: 'Aug 2024 - Present',
+      period: 'Aug 2024 - Dec 2025',
       type: 'Part-time',
       logo: csufLogo,
       highlights: [
@@ -937,17 +938,16 @@ const Experience = () => {
     },
     {
       id: 3,
-      role: 'Data Analyst',
+      role: 'Software Engineer',
       company: 'OSR Solutions',
       location: 'Hyderabad, Telangana',
-      period: 'Nov 2022 - Dec 2023',
+      period: 'Jan 2023 - Dec 2023',
       type: 'Full-time',
       icon: '📊',
       highlights: [
-        'Developed dynamic BI dashboards (Tableau + Power BI) tracking KPIs — shortened monthly reporting from days to hours',
-        'Built robust ETL workflows merging Salesforce, MySQL, and AWS sources — increased ingestion throughput by ~25%',
-        'Conducted anomaly detection and data quality audits, reducing discrepancy rates by ~30%',
-        'Collaborated cross-functionally with product, operations, and quality teams to deliver actionable analytics'
+        'Designed and developed full-stack data-driven workflows using backend services, REST APIs, and frontend components, reducing insight delivery time from days to hours',
+        'Designed scalable ETL pipelines on AWS with MySQL, improving data ingestion throughput by 25%',
+        'Performed data validation, anomaly detection, and data quality checks using SQL and Excel, reducing reporting discrepancies by 30%'
       ]
     },
     {
@@ -959,10 +959,10 @@ const Experience = () => {
       type: 'Internship',
       logo: phoenixLogo,
       highlights: [
-        'Engineered scalable data ingestion pipelines consolidating API, CSV, and database sources into AWS S3',
-        'Optimized Spark-based batch processing jobs, reducing runtime by ~20% on large datasets',
-        'Automated data validation and normalization scripts using Python — ensured schema compliance and data integrity',
-        'Supported big data architecture design with Hadoop + Spark + serverless components'
+        'Implemented scalable ETL data ingestion pipelines to consolidate data from multiple sources including REST APIs, CSV files, and relational databases into AWS S3 data lake, establishing a centralized data repository',
+        'Developed automated data validation and normalization scripts using Python to enforce schema consistency and data integrity, ensuring high-quality datasets for downstream analytics and machine learning workflows',
+        'Optimized batch data processing workflows using Apache Spark on large-scale datasets, reducing execution runtime by 20% through query optimization, partitioning strategies, and efficient resource allocation',
+        'Supported big data architecture design and implementation with Hadoop, Spark, and serverless AWS components, contributing to the development of a modern data infrastructure platform'
       ]
     }
   ]
@@ -1371,6 +1371,15 @@ const Projects = () => {
       image: '🔄',
       github: '#',
       live: '#'
+    },
+    {
+      id: 5,
+      title: 'Personal Website',
+      description: 'A modern, responsive portfolio website built with React and Framer Motion. Features smooth animations, dark/light theme toggle, and interactive UI elements. Built with Vite for fast development and optimized production builds, deployed on GitHub Pages with automated CI/CD workflows.',
+      tags: ['React', 'JavaScript', 'Framer Motion', 'CSS', 'Vite'],
+      image: '💼',
+      github: 'https://github.com/dakidinesh/portfolio',
+      live: 'https://dakidinesh.github.io/portfolio/'
     }
   ]
 
